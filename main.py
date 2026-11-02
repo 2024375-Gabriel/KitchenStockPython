@@ -38,7 +38,9 @@ def addInventory():
         print(f"New quantity: {inventory[item_name]}")
      
     else:
-        print("\nItem not found in inventory")
+        quantity = int(input("Enter starting quantity: "))
+        inventory[item_name] = quantity
+        print(f"{item_name} added to inventory.")
 
 def useInventory():
     print("\n=== Use Stock ===.")
@@ -65,8 +67,7 @@ while running:
     print("\n========== MAIN MENU ==========")
     print("1. View inventory")
     print("2. Add stock")
-    print("3. Use stock")
-    print("4. Exit")
+    print("3. Exit")
 
     choice = input("\nChoose an option: ")
 
@@ -78,12 +79,9 @@ while running:
     elif choice == "2":
         addInventory()
             
-    #Use Stock
-    elif choice == "3":
-        useInventory()
-        
     #Closing the app
-    elif choice == "4":
+
+    elif choice == "3":
         print("\nClosing Kitchen Manager Simulator...")
         running = False
 
