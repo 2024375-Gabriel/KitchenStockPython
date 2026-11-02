@@ -1,9 +1,13 @@
+#imports
+
+
 print("===================================")
 print("     KITCHEN MANAGER SIMULATOR")
 print("===================================")
 
 print("\nWelcome to your new kitchen!")
 
+#Stock
 inventory = {
     "Beef patty": 50,
     "Burguer bun": 50,
@@ -12,9 +16,52 @@ inventory = {
     "Coke": 30
 }
 
+#funcoes
+
+def viewInventory():
+    print("\n======= INVENTORY ========")
+
+    for item, quantity in inventory.items():
+        print(f"{item}: {quantity}")
+
+def addInventory():
+    print("\n===== ADD STOCK ======")
+    
+    item_name = input("Enter the item name: ")
+     
+    if item_name in inventory:
+        quantity = int(input("Enter Quantity to add: "))
+     
+        inventory[item_name] += quantity
+     
+        print(f"\n{quantity} added to {item_name}.")
+        print(f"New quantity: {inventory[item_name]}")
+     
+    else:
+        print("\nItem not found in inventory")
+
+def useInventory():
+    print("\n=== Use Stock ===.")
+
+    item_name = input("Enter the item name: ")
+        
+    if item_name in inventory:
+        quantity = int(input("Enter Quantity to remove: "))
+        
+        inventory[item_name] -= quantity
+        
+        print(f"\n{quantity} added to {item_name}.")
+        print(f"New quantity: {inventory[item_name]}")
+        
+    else:
+        print("\nItem not found in inventory")
+
+
+#Looping
 running = True
 
 while running:
+
     print("\n========== MAIN MENU ==========")
     print("1. View inventory")
     print("2. Add stock")
@@ -23,48 +70,23 @@ while running:
 
     choice = input("\nChoose an option: ")
 
+    #inventory
     if choice == "1":
-        print("\n======= INVENTORY ========")
+        viewInventory()
 
-        for item, quantity in inventory.items():
-            print(f"{item}: {quantity}")
-        
+    #Add Stock
     elif choice == "2":
-        print("\n===== ADD STOCK ======")
-
-        item_name = input("Enter the item name: ")
-
-        if item_name in inventory:
-            quantity = int(input("Enter Quantity to add: "))
-
-            inventory[item_name] += quantity
-
-            print(f"\n{quantity} added to {item_name}.")
-            print(f"New quantity: {inventory[item_name]}")
-
-        else:
-            print("\nItem not found in inventory")
+        addInventory()
             
-
+    #Use Stock
     elif choice == "3":
-        print("\n=== Use Stock ===.")
-
-        item_name = input("Enter the item name: ")
+        useInventory()
         
-        if item_name in inventory:
-                    quantity = int(input("Enter Quantity to remove: "))
-        
-                    inventory[item_name] -= quantity
-        
-                    print(f"\n{quantity} added to {item_name}.")
-                    print(f"New quantity: {inventory[item_name]}")
-        
-        else:
-                print("\nItem not found in inventory")
-
+    #Closing the app
     elif choice == "4":
         print("\nClosing Kitchen Manager Simulator...")
         running = False
 
+    #error
     else:
         print("\nInvalid option. Please choose 1, 2, 3 or 4.")
