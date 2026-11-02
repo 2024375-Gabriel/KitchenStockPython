@@ -58,33 +58,67 @@ def useInventory():
     else:
         print("\nItem not found in inventory")
 
+def stockMenu():
+    stock_running = True
 
-#Looping
+    while stock_running:
+
+        print("\n========== STOCK MENU ==========")
+        print("1. View inventory")
+        print("2. Add stock")
+        print("3. Exit")
+
+        choice = input("\nChoose an option: ")
+
+        #inventory
+        if choice == "1":
+            viewInventory()
+
+        #Add Stock
+        elif choice == "2":
+            addInventory()
+                
+        #Closing the app
+
+        elif choice == "3":
+            print("\nClosing Stock Menu...")
+            stock_running = False
+
+        #error
+        else:
+            print("\nInvalid option. Please choose 1, 2 or 3.")
+
+
+# ==== MAIN MENU ====
+
 running = True
 
 while running:
 
     print("\n========== MAIN MENU ==========")
-    print("1. View inventory")
-    print("2. Add stock")
-    print("3. Exit")
+    print("1. Menu")
+    print("2. Stock")
+    print("3. Booking")
+    print("4. Status")
+    print("5. Exit")
 
     choice = input("\nChoose an option: ")
 
-    #inventory
     if choice == "1":
-        viewInventory()
+        print("\nMenu section selected.")
 
-    #Add Stock
     elif choice == "2":
-        addInventory()
-            
-    #Closing the app
+        stockMenu()
 
     elif choice == "3":
+        print("\nBooking section selected.")
+
+    elif choice == "4":
+        print("\nStatus section selected.")
+
+    elif choice == "5":
         print("\nClosing Kitchen Manager Simulator...")
         running = False
 
-    #error
     else:
-        print("\nInvalid option. Please choose 1, 2, 3 or 4.")
+        print("\nInvalid option. Please choose 1, 2, 3, 4 or 5.") 
