@@ -1,5 +1,5 @@
 #imports
-
+import random
 
 print("===================================")
 print("     KITCHEN MANAGER SIMULATOR")
@@ -38,6 +38,8 @@ menu = {
     }
 
 }
+
+bookings = random.randint(1, 120)
 
 #funcoes
 
@@ -137,6 +139,9 @@ def menuScreen():
 
         print(f"Can make: {max_dishes}")
 
+def bookingScreen():
+    print("\n===== BOOKINGS =====")
+    print(f"Expected customers today: {bookings}")
 
 # ==== MAIN MENU ====
 
@@ -160,7 +165,7 @@ while running:
         stockMenu()
 
     elif choice == "3":
-        print("\nBooking section selected.")
+        bookingScreen()
 
     elif choice == "4":
         print("\nStatus section selected.")
