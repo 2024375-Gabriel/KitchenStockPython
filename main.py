@@ -7,13 +7,36 @@ print("===================================")
 
 print("\nWelcome to your new kitchen!")
 
-#Stock
+#Dicionarios
 inventory = {
     "Beef patty": 50,
     "Burguer bun": 50,
-    "Cheese Slice": 60,
-    "Frozen Fries": 20,
+    "Cheese slice": 60,
+    "Frozen fries": 20,
     "Coke": 30
+}
+
+menu = {
+    "Cheeseburger": {
+        "Beef patty": 1,
+        "Burguer bun": 1,
+        "Cheese slice": 1
+    },
+
+    "Double Cheeseburguer": {
+        "Beef patty": 2,
+        "Burguer bun": 1,
+        "Cheese slice": 2
+    },
+
+    "Fries": {
+        "Frozen fries": 1
+    },
+
+    "Coke": {
+        "Coke": 1
+    }
+
 }
 
 #funcoes
@@ -88,6 +111,32 @@ def stockMenu():
         else:
             print("\nInvalid option. Please choose 1, 2 or 3.")
 
+def menuScreen():
+    print("\n ===== MENU =====")
+
+    for dish, ingredients in menu.items():
+
+        print(f"\n{dish}")
+
+        possible_amounts = []
+
+        for ingredient, amount_needed in ingredients.items():
+
+            stock_amount = inventory.get(ingredient, 0)
+
+            possible = stock_amount // amount_needed
+
+            possible_amounts.append(possible)
+
+            print(
+                f"= {ingredient}: {amount_needed} needed"
+                f"| Stock: {stock_amount}"
+            )
+
+        max_dishes = min(possible_amounts)
+
+        print(f"Can make: {max_dishes}")
+
 
 # ==== MAIN MENU ====
 
@@ -105,7 +154,7 @@ while running:
     choice = input("\nChoose an option: ")
 
     if choice == "1":
-        print("\nMenu section selected.")
+        menuScreen()
 
     elif choice == "2":
         stockMenu()
